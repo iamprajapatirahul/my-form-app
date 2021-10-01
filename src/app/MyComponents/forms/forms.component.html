@@ -1,0 +1,15 @@
+<div>
+   <h1 class = "text-center">Demo Form page</h1>
+  <div class="container">
+    <app-add-form (formAdd)="addForm($event)"></app-add-form>
+    <h4>All Forms</h4>
+    <div *ngIf="this.forms.length === 0; else elseblock" style="color:#0000FF">
+      list is empty please enter data
+    </div>
+    <ng-template #elseblock>
+      <div *ngFor = "let form of forms; index as i">
+        <app-form-item [form]= "form" [i]="i" (formDelete)="deleteForm($event)" (formCheckbox)="toggleform($event)"></app-form-item>
+      </div>
+    </ng-template>
+  </div>
+</div>
